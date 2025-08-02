@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Web Utilities</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    
+    <section class="card">
+      <h2>Counter</h2>
+      <div class="counter">
+        <button onclick="decrement()">-Ve</button>
+        <span id="count">0</span>
+        <button onclick="increment()">+Ve</button>
+      </div>
+    </section>
+
+    
+    <section class="card">
+      <h2>BMI Calculator</h2>
+      <input type="number" id="height" placeholder="Height (cm)">
+      <input type="number" id="weight" placeholder="Weight (kg)">
+      <button onclick="calculateBMI()">Calculate BMI</button>
+      <p id="bmiResult"></p>
+    </section>
+
+   
+    <section class="card">
+      <h2>Change Text Color</h2>
+      <input type="text" id="colorInput" placeholder="Enter color name or hex">
+      <button onclick="changeTextColor()">Change Color</button>
+      <div id="colorBox">This text will change color</div>
+    </section>
+
+  
+    <section class="card">
+      <h2>Register Form</h2>
+      <form id="registerForm" onsubmit="return validateForm()">
+        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password">
+        <span id="strengthMsg"></span><br>
+        <button type="submit">Register</button>
+      </form>
+    </section>
+
+  </div>
+
+  <script src="class_dom.js"></script>
+</body>
+</html>
