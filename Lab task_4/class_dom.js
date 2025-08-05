@@ -37,26 +37,48 @@ function validateForm() {
   const confirm = document.getElementById("confirmPassword").value;
   const msg = document.getElementById("strengthMsg");
 
+  const hasNumber = /\d/.test(password);
+  const hasLower = /[a-z]/.test(password);
+  const hasUpper = /[A-Z]/.test(password);
+  const hasSpecial = /[!]/.test(password);
+
+  
   if (password.length < 8) {
+    msg.style.color = "red";
     msg.textContent = "Password must be at least 8 characters.";
     return false;
   }
 
-  const hasNumber = /\d/.test(password);
-  const hasSpecial = /[!]/.test(password);
 
-  if (!hasNumber || !hasSpecial) {
-    msg.textContent = "Password must include numbers and special characters.";
+  let strength = 0;
+  if (hasNumber) strength++;
+  if (hasLower) strength++;
+  if (hasUpper) strength++;
+  if (hasSpecial) strength++;
+
+  if (strength <= 2) {
+    msg.style.color = "orange";
+    msg.textContent = "Weak password.";
     return false;
+  } else if (strength === 3) {
+    msg.style.color = "blue";
+    msg.textContent = "Medium strength password.";
+    
+  } else {
+    msg.style.color = "green";
+    msg.textContent = "Strong password.";
   }
 
   if (password !== confirm) {
+    msg.style.color = "red";
     msg.textContent = "Passwords do not match.";
     return false;
   }
 
   alert("Success! Form submitted.");
-
   return true;
 }
+
+
+
 
